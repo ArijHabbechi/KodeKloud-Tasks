@@ -1,0 +1,11 @@
+---
+- name: Copy file to application servers
+  hosts: application_servers
+  vars_files:
+    - group_vars/application_servers/vault.yml
+  tasks:
+    - name: Copy index.html file
+      ansible.builtin.copy:
+        src: /usr/src/sysops/index.html
+        dest: /opt/sysops
+      become: yes
